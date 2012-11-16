@@ -1,0 +1,58 @@
+backgroundColor = #333333
+
+
+mainFont()
+    font-family Arial
+    color #efefef
+
+
+vendor(prop, args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    {prop} args
+
+display-box()
+    display box
+    display -webkit-box
+
+box-flex()
+    vendor('box-flex', arguments)
+
+box-orient()
+    vendor('box-orient', arguments)
+
+box-sizing()
+    vendor('box-sizing', arguments)
+
+body
+    background-color backgroundColor
+    mainFont()
+
+.main-list
+    display-box()
+    box-orient horizontal
+    font-size 2em
+    article
+        box-sizing border-box
+        margin 3em 1.2em
+        box-flex .5
+        padding 0em 2em
+
+        div
+            line-height 1.3em
+
+    .separator
+        margin 1.4em 0
+        padding .2em 1em
+        box-sizing border-box
+        box-flex .2
+        box-orient vertical
+        display-box()
+
+        div
+            background-color red
+            box-flex 1
+            padding .1em
+
+            &:nth-child(2n) 
+                background-color yellow

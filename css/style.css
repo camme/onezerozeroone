@@ -1,51 +1,247 @@
 body {
-  background-color: #333;
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
   font-family: Arial;
-  color: #efefef;
+  color: #555;
+}
+.other-info {
+  float: left;
+  font-size: 1.5em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  width: 25%;
+  padding: 5%;
+}
+.other-info .logo {
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.other-info .logo .logo-1,
+.other-info .logo .logo-4 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  height: 129px;
+  border-left: 43px solid #666;
+}
+.other-info .logo .logo-2,
+.other-info .logo .logo-3 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  height: 129px;
+  width: 45%;
+  border: 43px solid #999;
+}
+.other-info .logo .logo-3 {
+  border-color: #777;
+}
+.other-info .logo .logo-4 {
+  border-color: #aaa;
+}
+.other-info .logo-top {
+  float: left;
+  margin-bottom: 20%;
+}
+.other-info .logo-top .logo-text {
+  clear: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 5%;
+  font-size: 0.9em;
+  float: left;
+}
+.other-info .talk {
+  border-top: dotted 1px #bebebe;
+  font-size: 1.4em;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  float: left;
+}
+.other-info .talk .interesting {
+  font-weight: 400;
+}
+.other-info .about {
+  border-top: dotted 1px #bebebe;
+  float: left;
+  clear: left;
+}
+.other-info .about h1 {
+  font-size: 1em;
+  clear: left;
+}
+.other-info .about .about-title {
+  float: left;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.other-info .about .about-text {
+  clear: left;
+  float: left;
+  font-weight: 200;
+  font-size: 0.8em;
+}
+.other-info .social {
+  float: left;
+  margin-bottom: 5%;
+}
+.other-info .social a {
+  -webkit-transition: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  border-radius: 20px;
+  text-shadow: 0px 0px 8px #666;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 5px;
+  font-size: 0.8em;
+  line-height: 42px;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  text-decoration: none;
+  display: block;
+  float: left;
+  background-color: #888;
+  color: #eee;
+}
+.other-info .social a:hover {
+  background-color: #f1008e;
+  color: #fff;
 }
 .main-list {
-  display: box;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  font-size: 2em;
+  float: right;
+  width: 55%;
+  padding: 5% 5% 5% 5%;
+  font-size: 1.5em;
 }
 .main-list article {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 3em 1.2em;
-  -webkit-box-flex: 0.5;
-  -moz-box-flex: 0.5;
-  box-flex: 0.5;
-  padding: 0em 2em;
+  overflow: hidden;
+  margin-bottom: 10%;
+  float: left;
+  width: 100%;
+  position: relative;
+  background-color: #e4e4e4;
 }
-.main-list article div {
+.main-list article img {
+  width: 641px;
+}
+.main-list article:nth-child(2n + 1) {
+  clear: left;
+}
+.main-list article .intro {
+  background-color: #efefef;
   line-height: 1.3em;
+  font-size: 0.9em;
+  color: #777;
+  padding: 20px 30px 20px 30px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  margin-top: -20px;
+  margin-left: -20px;
+  position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 99;
+  float: left;
+  clear: left;
 }
-.main-list .separator {
-  margin: 1.4em 0;
-  padding: 0.2em 1em;
+.main-list article h2 {
+  z-index: 100;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  margin-bottom: 0;
+  margin-left: -20px;
+  position: relative;
+  background-color: #efefef;
+  padding: 20px 30px 10px 30px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin-top: 300px;
+  float: left;
+  clear: left;
+}
+.main-list article .tags {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-flex: 0.2;
-  -moz-box-flex: 0.2;
-  box-flex: 0.2;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  display: box;
-  display: -webkit-box;
+  z-index: 1;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7em;
+  padding: 10px 60px 10px 10px;
+  font-weight: 100;
+  float: left;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #eee;
+  background-color: #777;
 }
-.main-list .separator div {
-  background-color: #f00;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  padding: 0.1em;
+.main-list article .tags .tag {
+  display: block;
 }
-.main-list .separator div:nth-child(2n) {
-  background-color: #ff0;
+.main-list article:hover h2 {
+  left: 25%;
+}
+.main-list article:hover .intro {
+  left: 20%;
+}
+.main-list article:hover .tags {
+  height: auto;
+}
+@media only screen and (max-width: 580px) {
+  .main-list {
+    float: left;
+    width: 90%;
+    margin-top: 70px;
+  }
+  .other-info {
+    width: 90%;
+  }
+  .other-info .logo-top {
+    position: fixed;
+    z-index: 1000;
+    background-color: #eee;
+    width: 90%;
+    padding: 5%;
+    left: 0px;
+    top: 0px;
+  }
+  .other-info .logo-top .logo {
+    width: 30%;
+  }
+  .other-info .logo-top .logo .logo-1,
+  .other-info .logo-top .logo .logo-4 {
+    height: 45px;
+    border-left-width: 15px;
+  }
+  .other-info .logo-top .logo .logo-2,
+  .other-info .logo-top .logo .logo-3 {
+    height: 45px;
+    width: 45px;
+    border-width: 15px;
+  }
+  .other-info .logo-top .logo-text {
+    width: 65%;
+    font-size: 18px;
+    padding-top: 2px;
+    padding-left: 3%;
+    clear: none;
+  }
 }

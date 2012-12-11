@@ -1,0 +1,12 @@
+{
+    "server": {
+        "port": 8777,
+        "host": "http://localhost"
+    },
+    "twitter": {
+        "key": "9od3gSTlRt29BSODIl53Q",
+        "secret": "E7VHYAFSV2c4V0UNTOR9SayIaca6XnB7sWYeFpha27Q",
+        "accessToken": "16244710-3m7UCiHwJSKie26iOqIx2BcRDsc9HCNwIeAUYHwoI",
+        "accessTokenSecret": "agyxh8TSoE4CbHO2wKnhJPV4yTTppQ78idHC1lg0Lw"
+    }
+}

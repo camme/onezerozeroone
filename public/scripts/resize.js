@@ -1,4 +1,4 @@
-(function() {
+define(['nunt'], function() {
 
     nunt.on(nunt.READY, function() {
 
@@ -6,7 +6,7 @@
 
         var logo = document.querySelector('.logo');
         var width = logo.offsetWidth;
-        var startEm = 7.1;
+        var startEm = 6.9;
         var startWidth = logo.offsetWidth;
         //logo.style.fontSize;
 
@@ -21,12 +21,10 @@
             logo.style.fontSize = em + "em";
             //var ems = 
 
-            console.log('tjena', width);
-
         }
 
         resize();
 
     });
 
-})();
+});

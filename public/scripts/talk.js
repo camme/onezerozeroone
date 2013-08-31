@@ -1,5 +1,6 @@
-(function() {
+define(['nunt'], function() {
 
+    var timeoutRef = -1;
     
     nunt.on(nunt.READY, function() {
 
@@ -55,7 +56,8 @@
                 setTimeout(nextCharachter, delay);
             }
             else {
-                setTimeout(function(){
+                clearTimeout(timeoutRef);
+                timeoutRef = setTimeout(function(){
                     nunt.send("talk.done");
                 }, 5000);
             }
@@ -65,4 +67,4 @@
 
     });
 
-})();
+});

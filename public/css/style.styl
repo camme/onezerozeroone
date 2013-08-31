@@ -1,4 +1,4 @@
-backgroundColor = #eee
+backgroundColor = #f0f0f0
 logoPartWidth = 43px
 smallLogoPartWidth = 15px
 
@@ -44,19 +44,48 @@ column-count()
 column-gap()
     vendor('column-gap', arguments)
 
+html
+    min-height 100%
+    position relative
+
 body
-    background-color backgroundColor
+    background-color lighten(backgroundColor, 90%)
+    height 100%
+    min-height 100%
     margin 0
     padding 0
     mainFont()
 
+a
+    color #333
+    text-decoration none
+    &:hover
+        text-decoration underline
+
 .other-info
+    height 100%
+    min-height 100%
     float left
     font-size 1.5em
     font-family 'Raleway', sans-serif
     font-weight 100
     width 25%
     padding 5%
+
+    .separator
+        box-shadow 0px 5px 0px darken(backgroundColor, 4%)
+        border-bottom solid 5px darken(backgroundColor, 7%)
+        padding-top 20%
+        padding-bottom 20%
+
+    .nav
+        float left
+        width 100%
+
+        ul
+            padding 0
+            margin 0
+            list-style none
 
     .logo
         //width 4*logoPartWidth
@@ -84,8 +113,7 @@ body
 
     .logo-top
         float left
-        border-bottom solid 5px darken(backgroundColor, 7%)
-        padding-bottom 20%
+        padding-top 0
 
         .logo-text
             clear left
@@ -93,12 +121,9 @@ body
             padding-top 5%
             font-size .9em
             float left
+
     .talk
-        border-top solid 5px darken(backgroundColor, 4%)
-        border-bottom solid 5px darken(backgroundColor, 7%)
         font-size 1.4em
-        padding-top 20%
-        padding-bottom 20%
         float left
         width 100%
         box-sizing border-box
@@ -108,7 +133,6 @@ body
 
     .about
         padding-top 20%
-        border-top solid 5px darken(backgroundColor, 4%)
         float left
         clear left
 
@@ -159,10 +183,27 @@ body
                 background-color #f1008e
                 color #fff
 
+.main-list .article-holder
+    cursor pointer
+
 .main-list
+.single
     float right
-    width 55%
-    padding 5% 5% 5% 5%
+    position absolute
+    right 0px
+    width 65%
+    margin 0
+    //margin-top 5.05%
+    //margin-bottom 5.05%
+    border-left 50px solid darken(backgroundColor, 20%)
+    border-right 50px solid darken(backgroundColor, 20%)
+    border-top 50px solid darken(backgroundColor, 40%)
+    //border-bottom 50px solid darken(backgroundColor, 10%)
+    background-color darken(backgroundColor, 5%)
+    padding 5%
+    height 100%
+    min-height 100%
+    box-sizing border-box
     //display-box()
     //box-orient horizontal
     font-size 1.5em
@@ -170,12 +211,18 @@ body
     //column-gap .5em
 
     .article-holder
-        perspective 800px
-        transform-style preserve-3d
+        transition all .2s ease-in-out
+        clear left
+        //perspective 800px
+        //transform-style preserve-3d
         float left
 
     article
-        transform rotateY( 0deg )
+        //border-left 5px solid darken(backgroundColor, 20%)
+        //border-top 5px solid darken(backgroundColor, 20%)
+        //border-bottom 5px solid darken(backgroundColor, 20%)
+        //border-right 10px solid darken(backgroundColor, 8%)
+        //transform rotateY( 0deg )
         box-sizing border-box
         overflow hidden
         margin-bottom 10%
@@ -195,20 +242,28 @@ body
             clear left
 
         .intro
-            background-color lighten(backgroundColor, 4%)
+            //background-color lighten(backgroundColor, 4%)
+            background-color darken(backgroundColor, 5%)
             line-height 1.3em
             font-size .9em
             color #444
-            padding 20px 30px 20px 30px
+            padding 20px 30px 20px 40px
             font-family 'Raleway', sans-serif
             font-weight 200
             margin-top -20px
-            margin-left -20px
+            margin-left -40px
             position relative
             transition all .3s ease-in-out
             z-index 99
             float left
             clear left
+            p
+                margin 0
+            p+p
+                margin-top 20px
+
+        img
+            width 100%
 
         .date
             z-index 101
@@ -228,18 +283,24 @@ body
 
         h2
             color #333
+            text-decoration none
             z-index 100
             font-family 'Raleway', sans-serif
-            font-weight 200
+            font-weight 400
             margin-bottom 0
-            margin-left -20px
+            margin-left -40px
             position relative
-            background-color lighten(backgroundColor, 7%)
-            padding 20px 30px 10px 30px
+            background-color darken(backgroundColor, 5%)
+            padding 20px 30px 10px 40px
             transition all .4s ease-in-out
             margin-top 300px
             float left
             clear left
+
+            a
+                text-decoration none
+                color #333
+
 
 
         .tags
@@ -264,14 +325,18 @@ body
             .tag
                 display block
     .article-holder:hover
+        padding-left 0
+/*
         article
+            border-width 30px
+            transform scale(.9)
             transform rotateY( 5deg ) scale(.9) translateX(-60px)
             h2
                 left 190px
             .intro
                 left 160px
             .date
-                top 0
+                top 0*/
 
 @media only screen and (max-width: 580px) 
     .main-list

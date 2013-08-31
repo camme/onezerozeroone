@@ -1,6 +1,7 @@
 
 // the event framework
 var nunt = require('nunt');
+var users = require('user-data').load('./data/users.json');
 var settings = require('./settings');
 var everyauth = require('everyauth');
 var config = settings.config;
@@ -11,6 +12,9 @@ var express = require('express');
 var app = express();
 var server = http.createServer(app);
 var routes = require('./routes').init(app);
+var postsModel = require('./postsmodel').init(app);
+var security = require('./security').init(app);
+var cons = require('consolidate');
 
 // init nunt
 nunt.init({
@@ -35,6 +39,9 @@ app.configure(function(){
         })
     );
     app.use(express.static(__dirname + '/public'));
+    app.engine("html", cons.mustache);
+    app.set('view engine', 'html');
+    app.set('views', __dirname + '/public');
     app.use(app.router);
     app.use(everyauth.middleware());
 });

@@ -1,11 +1,12 @@
 //var moments = 
 var fs = require('fs');
-var indexHtml = fs.readFileSync('public/index.html', 'utf8');
 var postsModel = require('./postsmodel');
+var mustache = require('mustache');
 
 exports.init = function(app) {
     app.get("/", index);
     app.get("/posts/:post", showPost);
+    app.get("/:tag", showByTags);
 }
 
 
@@ -34,26 +35,21 @@ function showPost(req, res) {
 
     var post = postsModel.getEntryByPath(req.params.post);
 
+    var parsed = marked(post.content);
+    parsed = parsed.replace(/<p>---/g, "<p class='intro'>");
+    parsed = parsed.replace(/---<\/p>/g, "</p>");
+
     var parsedPost = {
-        content: marked(post.content),
-        title: post.title
+        content: parsed,
+        title: post.title,
+        tags: post.tags
     };
 
-    res.render('post.html', {
-        //locals: {
-            //posts: postsModel.entries
-        //},
-        //partials: {
-            //posts: postsModel.entries
-        //},
-        post: parsedPost
-    });
+    render({post: parsedPost}, 'post.html', req, res);
 
     return;
 
 }
-
-
 
 function index(req, res) {
 
@@ -63,22 +59,72 @@ function index(req, res) {
         var parsedPost = {
             path: '/posts/' + post.path,
             excerpt: marked(post.excerpt),
-            shortTitle: post.shortTitle
+            shortTitle: post.shortTitle,
+            firstImage: post.firstImage
         };
         posts.push(parsedPost);
     });
 
-    res.render('index.html', {
-        //locals: {
-            //posts: postsModel.entries
-        //},
-        //partials: {
-            //posts: postsModel.entries
-        //},
-        posts: posts
-    });
+    render({posts: posts}, 'index.html', req, res);
 
     return;
+
+}
+
+function showByTags(req, res) {
+
+    var posts = [];
+
+    postsModel.getEntriesByTag(req.params.tag).forEach(function(post) {
+        var parsedPost = {
+            path: '/posts/' + post.path,
+            excerpt: marked(post.excerpt),
+            shortTitle: post.shortTitle,
+            firstImage: post.firstImage
+        };
+        posts.push(parsedPost);
+    });
+
+    render({posts: posts}, 'index.html', req, res);
+
+    return;
+
+}
+
+function render(data, template, req, res) {
+
+    var binary = fs.readFileSync('public/images/1001.png');
+    var base64data = new Buffer(binary).toString('base64');
+    data.logo64 =  base64data;
+
+    data.tagline = "Javascript, nodejs and everything in between.";
+    data.tags = postsModel.getAllTags();
+
+    data.tags.forEach(function(tag) {
+        if (tag.name == req.params.tag) {
+            tag.active =true;
+        }
+    });
+
+    var template = fs.readFileSync('public/' + template, 'utf8');
+    var html = mustache.render(template, data);
+
+    var parts = html.split('<!-- part -->');
+
+    console.log("--------------");
+    console.log("Total size: %s", html.length);
+    console.log("Part 1 size: %s", parts[0].length);
+    console.log("Part 2 size: %s", parts[1].length);
+
+    res.setHeader('Transfer-Encoding', 'chunked');
+    res.write(parts[0]);
+    //res.end(parts[1]);
+
+    setTimeout(function() {
+        res.end(parts[1]);
+    }, 2);
+
+ 
 
 }
 

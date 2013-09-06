@@ -27,7 +27,7 @@ function runTalk() {
     var talk = currentTalks.splice(randomIndex, 1)[0];
 
     if (typeof talk == 'string') {
-        nunt.send("talk.show", {content: talk});
+        //nunt.send("talk.show", {content: talk});
     }
     else {
     }
@@ -39,7 +39,7 @@ function runTalk() {
 
 }
 
-nunt.on('talk.done', runTalk);
-nunt.on(nunt.CONNECTED, runTalk);
+//nunt.on('talk.done', runTalk);
+//nunt.on(nunt.CONNECTED, runTalk);
 
 

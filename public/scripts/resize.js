@@ -2,7 +2,7 @@ define(['nunt'], function() {
 
     nunt.on(nunt.READY, function() {
 
-        window.addEventListener('resize', resize, false);
+        //window.addEventListener('resize', resize, false);
 
         var logo = document.querySelector('.logo');
         var width = logo.offsetWidth;
@@ -23,7 +23,7 @@ define(['nunt'], function() {
 
         }
 
-        resize();
+        //resize();
 
     });
 

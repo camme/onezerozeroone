@@ -2,35 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/1001-webfont.css">
-    <link rel="stylesheet" href="/css/social.css"><!--[if IE 7]>
-    <link rel="stylesheet" href="css/social-ie7.css"><![endif]-->
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,200,100' rel='stylesheet' type='text/css'>
-    <!--<script type="text/javascript" charset="utf-8" src="/socket.io/socket.io.js"></script>-->
-    <!--<script type="text/javascript" charset="utf-8" src="/require/nunt.js"></script>-->
-    <!--<script type="text/javascript" charset="utf-8" src="/nunt/nunt.js"></script>-->
-    <script data-main="/scripts/main" src="/scripts/require.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        requirejs.config({
-            paths: {
-                "socketio": "/socket.io/socket.io",
-                "nunt": "/nunt/nunt"
-            },
-            shim: {
-                "socketio": {
-                    exports: "io"
-                },
-                'nunt': {
-                    deps: ["socketio"],
-                    exports: "nunt"
-                }
-            }
-        });
-    </script>
-	<title>1001.2</title>
+    <title>1001.2</title>
+    <style type="text/css" media="all">
+
+        .loading { color:  #666; font-family: arial, helvetica, sans-serif; margin: 20% 40%; text-align: center; font-size: 1.3em; width: 20%; -webkit-animation: l2 1s; }
+
+        .logo64 {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @-webkit-keyframes l2 {
+            0% {opacity: 0.0001;}
+            50% {opacity: 1;}
+            100% {opacity: 0.0001;}
+        }
+
+        .container {
+            opacity: 0.0001;
+        }
+
+    </style>
 </head>
 <body>
+
+    <div class="loading">
+        <img class="logo64" src="data:image/png;base64,{{{logo64}}}" alt="logo" />
+        <div>loading</div>
+    </div>
+
+    <!-- part -->
+
+
+
+    <div class="container">
 
     <div class="single">
 
@@ -38,13 +44,13 @@
         <div class="article-holder">
             <article style="background: url(media/image1.jpg) no-repeat">
                 <div class="date">5th of november 2012</div>
-                <h1><a href="/{{path}}">{{shortTitle}}</a></h1>
                 <div class="tags">
-                    <span class="tag">javascript</span>
-                    <span class="tag">nodejs</span>
-                    <span class="tag">wordpress</span>
+                    <span class="tag-title">tags:</span>
+                    {{#tags}}
+                    <span class="tag"><a href="/{{.}}">{{.}}</a></span>
+                    {{/tags}}
                 </div>
-                <div class="intro">
+                 <div class="content">
                     {{{content}}}
                 </div>
             </article>
@@ -57,20 +63,23 @@
     <div class="other-info">
         <div class="logo-top separator">
             <a class="logo" href="/">
-                <span class="logo-1">1</span>
-                <span class="logo-2">0</span>
-                <span class="logo-3">0</span>
-                <span class="logo-4">1</span>
+                <img src="/images/1001.svg" alt="1001 Logo"/>
             </a>
             <div class="logo-text">Javascript, node and everything in between.</div>
         </div>
         <div class="nav separator">
+            <div class="nav-title">tags:</div>
             <ul>
-                <li><a href="/">Blog</a></li>
-                <li><a href="/projects">Projects</a></li>
+                {{#tags}}
+                <li {{#active}}class="active"{{/active}}><a href="/{{name}}">{{name}}</a> <span class="count">{{count}}</span></li>
+                {{/tags}}
+                <ul class="extra-nav">
+                    <li class="about-link"><a href="#">About</a></li>
+                    <!--<li class="search-link"><a href="#">Search</a></li>-->
+                </ul>
             </ul>
         </div>
-        <div class="talk separator">You are about <span class="interesting">1500km</span> from me right now.</div>
+        <!--<div class="talk separator">You are about <span class="interesting">1500km</span> from me right now.</div>-->
         <div class="about">
             <div class="about-title">About</div>
             <div class="about-text">
@@ -94,5 +103,30 @@
             <!--<h1 class="name">Camilo Tapia</h1>-->
         </div>
     </div>
+
+</div>
+
+    <script data-main="scripts/main" src="/scripts/require.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        requirejs.config({
+            baseUrl: "/scripts",
+            paths: {
+                "socketio": "/socket.io/socket.io",
+                "nunt": "/nunt/nunt",
+                "text": "lib/text"
+            },
+            shim: {
+                "socketio": {
+                    exports: "io"
+                },
+                'nunt': {
+                    deps: ["socketio"],
+                    exports: "nunt"
+                }
+            }
+        });
+    </script>
+	
+
 </body>
 </html>

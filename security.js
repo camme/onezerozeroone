@@ -1,13 +1,14 @@
 var everyauth = require('everyauth');
 var users = require('user-data');
+var config = require('./config');
 
 exports.init = function(app) {
 
 
     everyauth.dropbox
 
-        .consumerKey('wky5toz3cbvmwza')
-        .consumerSecret('62r1feb703muurw')
+        .consumerKey(config.dropbox.key)
+        .consumerSecret(config.dropbox.secret)
 
         .findOrCreateUser( function (sess, accessToken, accessSecret, user) {
 

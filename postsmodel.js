@@ -2,7 +2,8 @@
 var fs = require('fs');
 var users = require('user-data');
 var dbox  = require("dbox")
-var dropboxApp   = dbox.app({ "app_key": "wky5toz3cbvmwza", "app_secret": "62r1feb703muurw" }) 
+var config = require('./config');
+var dropboxApp   = dbox.app({ "app_key": config.dropbox.key, "app_secret": config.dropbox.secret }) 
 var dropboxClient = dropboxApp.client({ 
     oauth_token: users.getList()[0].dropbox.accessToken,
     oauth_token_secret: users.getList()[0].dropbox.accessSecret

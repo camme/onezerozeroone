@@ -1,4 +1,5 @@
 node_modules
 posts
 config.json
+config.js
 data/

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1001.2</title>
+    <style type="text/css" media="all">
+
+        .loading { color:  #666; font-family: arial, helvetica, sans-serif; margin: 20% 40%; text-align: center; font-size: 1.3em; width: 20%; -webkit-animation: l2 1s; }
+
+        .logo64 {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @-webkit-keyframes l2 {
+            0% {opacity: 0.0001;}
+            50% {opacity: 1;}
+            100% {opacity: 0.0001;}
+        }
+
+        .container {
+            opacity: 0.0001;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="loading">
+        <img class="logo64" src="data:image/png;base64,{{{logo64}}}" alt="logo" />
+        <div>loading</div>
+    </div>
+
+    <!-- part -->
+
+
+
+    <div class="container">
+
+    <div class="single">
+
+        {{#post}}
+        <div class="article-holder">
+            <article style="background: url(media/image1.jpg) no-repeat">
+                <div class="date">5th of november 2012</div>
+                <div class="tags">
+                    <span class="tag-title">tags:</span>
+                    {{#tags}}
+                    <span class="tag"><a href="/{{.}}">{{.}}</a></span>
+                    {{/tags}}
+                </div>
+                 <div class="content">
+                    {{{content}}}
+                </div>
+            </article>
+        </div>
+        {{/post}}
+
+    </div>
+
+
+    <div class="other-info">
+        <div class="logo-top separator">
+            <a class="logo" href="/">
+                <img src="/images/1001.svg" alt="1001 Logo"/>
+            </a>
+            <div class="logo-text">Javascript, node and everything in between.</div>
+        </div>
+        <div class="nav separator">
+            <div class="nav-title">tags:</div>
+            <ul>
+                {{#tags}}
+                <li {{#active}}class="active"{{/active}}><a href="/{{name}}">{{name}}</a> <span class="count">{{count}}</span></li>
+                {{/tags}}
+                <ul class="extra-nav">
+                    <li class="about-link"><a href="#">About</a></li>
+                    <!--<li class="search-link"><a href="#">Search</a></li>-->
+                </ul>
+            </ul>
+        </div>
+        <!--<div class="talk separator">You are about <span class="interesting">1500km</span> from me right now.</div>-->
+        <div class="about">
+            <div class="about-title">About</div>
+            <div class="about-text">
+                <p>This is a small playground for my javascript experiences.</p>
+                <p>
+                I’m a 38 year old tech enthusiast who works as a tech visionary at 24HR Communications Malmö,
+                one of the best web agencies in Malmö. </p>
+                <p>
+                I'm an web architect and I develop using many web technologies, but I love and enjoy writing javascript the most.
+                Since I began to use it around 13 years ago, I’ve continuously been surprised of its capabilities.
+                </p>
+                <p>So, this site revolves mostly about my thoughts and projects with js.</p>
+            </div>
+            <div class="social">
+                <a href="https://github.com/Camme" class="icon-github"></a>
+                <a href="mailto:camilo.tapia@gmail.com" class="icon-mail"></a>
+                <a href="http://twitter.com/camilotapia" class="icon-twitter"></a>
+                <a href="https://plus.google.com/116088809099838308089" class="icon-gplus"></a>
+                <a href="http://se.linkedin.com/in/camilotapia" class="icon-linkedin"></a>
+            </div>
+            <!--<h1 class="name">Camilo Tapia</h1>-->
+        </div>
+    </div>
+
+</div>
+
+    <script data-main="scripts/main" src="/scripts/require.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        requirejs.config({
+            baseUrl: "/scripts",
+            paths: {
+                "socketio": "/socket.io/socket.io",
+                "nunt": "/nunt/nunt",
+                "text": "lib/text"
+            },
+            shim: {
+                "socketio": {
+                    exports: "io"
+                },
+                'nunt': {
+                    deps: ["socketio"],
+                    exports: "nunt"
+                }
+            }
+        });
+    </script>
+	
+
+</body>
+</html>

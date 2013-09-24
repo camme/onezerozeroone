@@ -143,6 +143,8 @@ function parseEntry(item, content, entriesByTag, entriesByPath) {
     var shortTitle = /(.*?)\n/.exec(metaContent)[1].replace(/^\s+/g, '').replace(/\s+$/g, '');
     var urlName = shortTitle.toLowerCase().replace(/[ ]/g, '-').replace(/['"´`]/g, '');
     var tags = /tags:(.*)\n/i.exec(metaContent)[1].split(",");
+    var publishedData = /hide:(.*)\n/i.exec(metaContent);
+    var published = publishedData ? publishedData[0] == "true" : false;
     var excerpt = metaContent.replace(/tags:(.*)\n/i, '').replace(/(.*)\n/, '');
 
     var imagesRe = /!\[image\]\((.*?)\)/g;
@@ -172,7 +174,8 @@ function parseEntry(item, content, entriesByTag, entriesByPath) {
         firstImage: images.length > 0 ? images[0] : null,
         path: urlName,
         shortTitle: shortTitle,
-        tags: tags
+        tags: tags,
+        published: published
     };
 
 
@@ -200,6 +203,7 @@ function loadParsedEntry(entry) {
 }
 
 syncPosts();
+setInterval(syncPosts, 1000 * 60 * 5);
 
 exports.init = function(app) {
     app.get("/sync", syncPosts);

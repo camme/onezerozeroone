@@ -56,13 +56,15 @@ function index(req, res) {
     var posts = [];
 
     postsModel.entries.forEach(function(post) {
-        var parsedPost = {
-            path: '/posts/' + post.path,
-            excerpt: marked(post.excerpt),
-            shortTitle: post.shortTitle,
-            firstImage: post.firstImage
-        };
-        posts.push(parsedPost);
+        if (post.published || req.query.hemlig == "true") {
+            var parsedPost = {
+                path: '/posts/' + post.path,
+                excerpt: marked(post.excerpt),
+                shortTitle: post.shortTitle,
+                firstImage: post.firstImage
+            };
+            posts.push(parsedPost);
+        }
     });
 
     render({posts: posts}, 'index.html', req, res);
@@ -76,13 +78,15 @@ function showByTags(req, res) {
     var posts = [];
 
     postsModel.getEntriesByTag(req.params.tag).forEach(function(post) {
-        var parsedPost = {
-            path: '/posts/' + post.path,
-            excerpt: marked(post.excerpt),
-            shortTitle: post.shortTitle,
-            firstImage: post.firstImage
-        };
-        posts.push(parsedPost);
+        if (post.published || req.query.hemlig == "true") {
+            var parsedPost = {
+                path: '/posts/' + post.path,
+                excerpt: marked(post.excerpt),
+                shortTitle: post.shortTitle,
+                firstImage: post.firstImage
+            };
+            posts.push(parsedPost);
+        }
     });
 
     render({posts: posts}, 'index.html', req, res);
@@ -101,7 +105,7 @@ function render(data, template, req, res) {
     data.tags = postsModel.getAllTags();
 
     data.tags.forEach(function(tag) {
-        if (tag.name == req.params.tag) {
+        if (tag.name == req.query.tag) {
             tag.active =true;
         }
     });
@@ -111,10 +115,10 @@ function render(data, template, req, res) {
 
     var parts = html.split('<!-- part -->');
 
-    console.log("--------------");
-    console.log("Total size: %s", html.length);
-    console.log("Part 1 size: %s", parts[0].length);
-    console.log("Part 2 size: %s", parts[1].length);
+    //console.log("--------------");
+    //console.log("Total size: %s", html.length);
+    //console.log("Part 1 size: %s", parts[0].length);
+    //console.log("Part 2 size: %s", parts[1].length);
 
     res.setHeader('Transfer-Encoding', 'chunked');
     res.write(parts[0]);
@@ -124,7 +128,7 @@ function render(data, template, req, res) {
         res.end(parts[1]);
     }, 2);
 
- 
+
 
 }
 

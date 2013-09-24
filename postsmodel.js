@@ -174,8 +174,7 @@ function parseEntry(item, content, entriesByTag, entriesByPath) {
         firstImage: images.length > 0 ? images[0] : null,
         path: urlName,
         shortTitle: shortTitle,
-        tags: tags,
-        published: published
+        tags: tags
     };
 
 
@@ -203,7 +202,6 @@ function loadParsedEntry(entry) {
 }
 
 syncPosts();
-setInterval(syncPosts, 1000 * 60 * 5);
 
 exports.init = function(app) {
     app.get("/sync", syncPosts);

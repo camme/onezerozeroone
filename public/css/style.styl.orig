@@ -1,0 +1,601 @@
+//@import "http://fonts.googleapis.com/css?family=Raleway:400,700,200,100"
+
+backgroundColor = #fefefe
+logoPartWidth = 43px
+smallLogoPartWidth = 15px
+actionColor = #f1008e
+
+mainFont()
+    font-family 'Raleway', sans-serif
+    color #555
+
+
+vendor(prop, args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    {prop} args
+
+display-box()
+    display box
+    display -webkit-box
+
+box-flex()
+    vendor('box-flex', arguments)
+
+perspective()
+    vendor('perspective', arguments)
+
+transform()
+    vendor('transform', arguments)
+
+transform-style()
+    vendor('transform-style', arguments)
+
+box-orient()
+    vendor('box-orient', arguments)
+
+box-sizing()
+    vendor('box-sizing', arguments)
+
+transition()
+    vendor('transition', arguments)
+
+column-count()
+    vendor('column-count', arguments)
+
+column-gap()
+    vendor('column-gap', arguments)
+
+html
+    min-height 100%
+    position relative
+
+body
+    background-color lighten(backgroundColor, 90%)
+    height 100%
+    min-height 100%
+    margin 0
+    padding 0
+    mainFont()
+
+a
+    color #333
+    text-decoration none
+    &:hover
+        text-decoration underline
+
+.loading
+    display none
+
+.container
+    -webkit-animation appear .5s
+    display flex
+    flex-direction reverse-row
+
+.other-info
+    font-size 1.5em
+    font-family 'Raleway', sans-serif
+    font-weight 100
+    flex .4
+    padding 4%
+    order 1
+
+    .separator
+        box-shadow 0px 5px 0px darken(backgroundColor, 4%)
+        border-bottom solid 5px darken(backgroundColor, 7%)
+        padding-top 15%
+        padding-bottom 15%
+
+    .nav
+        float left
+        width 100%
+        .about-link
+            display none
+
+        .nav-title
+            font-size .7em
+            color #999
+
+        ul
+            padding 0
+            margin 0
+            list-style none
+
+            li
+                float left
+                clear left
+            li.active a
+                font-weight 700
+            a
+                display block
+                float left
+
+            .count
+                background-color lighten(actionColor, 70%)
+                border-radius 150px
+                font-size .4em
+                margin-top 5px
+                height 20px
+                width 20px
+                box-sizing border-box
+                padding-top 4px
+                font-family arial
+                text-align center
+                margin-left 10px
+                display block
+                float left
+
+    .logo
+        //width 4*logoPartWidth
+        float left
+        box-sizing border-box
+        width 100%
+        svg, img
+            float left
+            width 100%
+            #l1
+                -webkit-animation logo
+
+
+
+
+    .logo-top
+        float left
+        padding-top 0
+
+        .logo-text
+            clear left
+            text-align center
+            box-sizing border-box
+            padding-top 5%
+            font-size .8em
+            float left
+
+    .talk
+        font-size 1.4em
+        float left
+        width 100%
+        box-sizing border-box
+
+        .interesting
+            font-weight 700
+
+    .about
+        padding-top 20%
+        float left
+        clear left
+
+        h1
+            font-size 1em
+            clear left
+
+        .name 
+            text-align right
+
+        .about-title
+            float left
+            font-weight 700
+            margin 0px 0 10px
+
+        .about-text
+            clear left
+            float left
+            font-weight 200
+            font-size .8em
+            color #999
+            //margin-bottom 5%
+
+    .social
+        float left
+        margin-top 5%
+        margin-bottom 5%
+        a
+            padding-left 1px
+            transition all ease-out .3s
+            border-radius 20px
+            text-shadow 0px 0px 8px #666
+            box-sizing border-box
+            margin-right 5px
+            font-size .8em
+            line-height 42px
+            text-align center
+            //text-shadow 1px 1px 1px #fff
+            height 40px
+            width 40px
+            box-sizing border-box
+            text-decoration none
+            display block
+            float left
+            background-color #888
+            color #eee
+
+            &:hover
+                background-color actionColor
+                color #fff
+
+.main-list .article-holder
+    cursor pointer
+
+.main-list
+.single
+    flex 1
+    margin 0
+    order 2
+    //margin-top 5.05%
+    //margin-bottom 5.05%
+    border-left 50px solid darken(backgroundColor, 10%)
+    border-right 50px solid darken(backgroundColor, 15%)
+    border-top 50px solid darken(backgroundColor, 20%)
+    //border-bottom 50px solid darken(backgroundColor, 10%)
+    background-color darken(backgroundColor, 2%)
+    padding 5%
+    box-sizing border-box
+    //display-box()
+    //box-orient horizontal
+    font-size 1.5em
+    //column-count 2
+    //column-gap .5em
+
+    h1
+        line-height 1.2em
+        margin-top 0
+        clear left
+
+    article
+        //border-left 5px solid darken(backgroundColor, 20%)
+        //border-top 5px solid darken(backgroundColor, 20%)
+        //border-bottom 5px solid darken(backgroundColor, 20%)
+        //border-right 10px solid darken(backgroundColor, 8%)
+        //transform rotateY( 0deg )
+        box-sizing border-box
+        overflow hidden
+        margin-bottom 10%
+        float left
+        width 100%
+        position relative
+        //height 500px
+        //transition all .2s ease-in-out
+        background-color darken(backgroundColor, 2%)
+        line-height 1.3em
+
+        pre
+            border-left 25px solid darken(backgroundColor, 15%)
+            border-right 25px solid darken(backgroundColor, 20%)
+            border-top 25px solid darken(backgroundColor, 35%)
+            border-bottom 25px solid darken(backgroundColor, 10%)
+            background-color white
+            box-sizing border-box
+            width 100%
+            overflow scroll
+            padding 20px
+            font-size .9em
+            line-height 1.2em
+
+        a
+            color darken(actionColor, 20%)
+
+        img
+            width 641px
+            //height 400px
+            //position absolute
+
+        &:nth-child(2n + 1)
+            clear left
+
+        .intro
+            //background-color lighten(backgroundColor, 4%)
+            background-color darken(backgroundColor, 2%)
+            font-size .8em
+            color #666
+            padding 20px 30px 20px 40px
+            font-family 'Raleway', sans-serif
+            font-weight 200
+            margin-top -20px
+            margin-left -40px
+            position relative
+            //transition all .3s ease-in-out
+            z-index 99
+            float left
+            clear left
+            p
+                margin 0
+            p+p
+                margin-top 20px
+
+        img
+            width 100%
+
+        .date
+            font-family 'Raleway', sans-serif
+            margin-bottom 0
+            right 0
+            font-size .7em
+            color #999
+            font-weight 700
+            float right
+
+        h2
+            color #333
+            text-decoration none
+            z-index 100
+            font-family 'Raleway', sans-serif
+            font-weight 400
+            margin-bottom 0
+            margin-left -40px
+            position relative
+            background-color darken(backgroundColor, 2%)
+            padding 0px 30px 10px 40px
+            //transition all .4s ease-in-out
+            line-height 1.2em
+            float left
+            clear left
+            margin-top 0
+            a
+                text-decoration none
+                color #333
+
+
+
+        &.has-image h2
+            margin-top 300px
+            padding-top 20px
+
+
+        .tags
+            //transform-style preserve-3d
+            //transform rotateY( 5deg ) scale(.9) translateX(-60px)
+            box-sizing border-box
+            z-index 1
+            font-family 'Raleway', sans-serif
+            font-size .7em
+            font-weight 100
+            transition all .2s ease-out
+            float left
+            padding-bottom 7% 
+            padding-left 2px
+            color #999
+            width 70%
+            .tag:after
+                content: ","
+                padding-right 3px
+            .tag:last-child:after
+                content: ""
+            .tag-title
+                font-weight 700
+            a
+                color #999
+        .data
+            float right
+
+    .article-holder:hover
+        padding-left 0
+/*
+        article
+            border-width 30px
+            transform scale(.9)
+            transform rotateY( 5deg ) scale(.9) translateX(-60px)
+            h2
+                left 190px
+            .intro
+                left 160px
+            .date
+                top 0*/
+.main-list
+    flex-wrap wrap
+    display flex
+    .article-holder
+        article
+            box-shadow 0px 5px 0px darken(backgroundColor, 9%)
+            border-bottom solid 5px darken(backgroundColor, 12%)
+            padding-bottom 5%
+            margin-bottom 15%
+
+        flex-basis 29.3333%
+        padding-right 6%
+        article .excerpt
+            font-size 1.0em
+        article h2
+            font-size 1.1em
+        &:nth-child(3n + 2)
+            padding-right 0%
+        &:nth-child(1), &:nth-child(2)
+            flex-basis 47%
+            padding-right 6%
+            font-size 1.2em
+            .intro
+                line-height 1.3em
+        &:nth-child(2)
+            padding-right 0
+
+.single
+    font-size 1.2em
+    article
+        .intro
+            font-size 1.2em
+            line-height 1.3em
+            font-weight 700
+            margin-top 10px
+            background-color transparent
+        h2
+            margin-left 0
+            padding 40px 0 10px
+            margin-top 0
+            font-weight 700
+        p
+            clear left
+        li
+            padding-bottom 10px
+
+        ul
+            clear left
+
+@media only screen and (max-width: 1000px) 
+    .other-info
+        .nav ul
+            .count
+                display none
+        .about
+            font-size .9em
+        .logo-top
+            .logo-text
+                display none
+
+
+    .main-list
+        flex-wrap wrap
+        display flex
+        .article-holder
+            flex-basis 47%
+            padding-right 6%
+            &:nth-child(2n + 2)
+                padding-right 0%
+
+    .single .article-holder
+        .date
+            float left
+            font-size 1em
+        .tags
+            padding-left 0
+            width 100%
+
+
+
+
+<<<<<<< HEAD
+@media only screen and (max-width: 900px) 
+=======
+@media only screen and (max-width: 680px) 
+>>>>>>> 9183c36a0dd0a0aad2dea91243a1ff7ba61150c0
+    .container
+        flex-direction column
+    .main-list, .single
+        width 90%
+        margin 0 5%
+        margin-top 115px
+        padding 0
+        border 0
+        article .intro, article h2
+            background-color transparent
+        article
+            font-size .8em
+        background-color transparent
+
+    .single .article-holder
+        .date
+            float left
+            font-size 1em
+        .tags
+            padding-left 0
+
+        pre
+            border-left-width 10px
+            border-top-width 10px
+            border-right-width 10px
+            border-bottom-width 10px
+
+
+    .main-list
+        .article-holder:nth-child(n)
+            article 
+                background-color #fff
+                margin-bottom 10%
+                .intro, h2
+                    background-color #fff
+            flex-basis 100%
+            padding-right 0
+
+    .other-info
+        width 100%
+        z-index 1000
+        background-color backgroundColor
+        //position fixed
+        display flex
+        padding 0
+        &.about-on
+            .about
+                display block
+        .about
+            display none
+            transition height .5s ease-out;
+            padding-top 0
+            position absolute
+            top 90px
+            left 0
+            width 94%
+            margin 3%
+            border-radius 10px
+            border 4px solid darken(backgroundColor, 7)
+            padding 10%
+            box-sizing border-box
+            background-color white
+            z-index 100
+        .nav
+            background-color transparent
+            width auto
+            padding 10px 0px 10px 10px
+            top 0
+            right 20px
+            position fixed
+            z-index 1000
+            box-shadow none
+            border 0
+            .nav-title
+                display none
+            .extra-nav
+                li
+                    display block
+                    float right
+                    margin-top 30px
+                    line-height .1em
+             ul
+                li
+                    display none
+                    float left
+                    a
+                        font-size .8em
+
+        .logo-top
+            box-shadow 0px 10px 0px darken(backgroundColor, 4%)
+            border-bottom solid 10px darken(backgroundColor, 7%)
+            position fixed 
+            width 100%
+            box-sizing border-box
+            background-color darken(backgroundColor, 10%)
+            z-index 1000
+            border 0
+            padding  20px 5%
+            flex 1
+
+            .logo
+                width 100px
+                .logo-1, .logo-4
+                    height 3*smallLogoPartWidth
+                    border-left-width smallLogoPartWidth
+                .logo-2, .logo-3
+                    height 3*smallLogoPartWidth
+                    width 3*smallLogoPartWidth
+                    border-width smallLogoPartWidth
+            .logo-text
+                display none
+                width 65%
+                font-size 16px
+                padding-top 2px
+                padding-left 3%
+                clear none
+                        
+
+
+
+@-webkit-keyframes appear
+    from 
+        opacity: 0.0001
+    to 
+        opaicty: 1
+
+@-webkit-keyframes logo
+    0%
+        fill red
+    20%
+        fill yellow
+
+

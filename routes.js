@@ -54,9 +54,10 @@ function showPost(req, res) {
 function index(req, res) {
 
     var posts = [];
+    console.log(req.headers.host);
 
     postsModel.entries.forEach(function(post) {
-        if (post.published || req.query.hemlig == "true") {
+        if (post.published || req.query.hemlig == "true" || req.headers.host.indexOf("localhost:8777") > -1) {
             var parsedPost = {
                 path: '/posts/' + post.path,
                 excerpt: marked(post.excerpt),
@@ -78,7 +79,7 @@ function showByTags(req, res) {
     var posts = [];
 
     postsModel.getEntriesByTag(req.params.tag).forEach(function(post) {
-        if (post.published || req.query.hemlig == "true") {
+        if (post.published || req.query.hemlig == "true" || req.headers.host.indexOf("localhost:8777") > -1) {
             var parsedPost = {
                 path: '/posts/' + post.path,
                 excerpt: marked(post.excerpt),

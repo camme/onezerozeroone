@@ -40,11 +40,13 @@
 
         {{#posts}}
         <div class="article-holder">
-            <article {{#firstImage}}class="has-image" style="background: url({{firstImage}}) no-repeat"{{/firstImage}}>
+            <article {{#firstImage}}class="has-image" style="background-image: url({{firstImage}}) "{{/firstImage}}>
                 <h2><a href="{{path}}">{{shortTitle}}</a></h2>
+                {{^firstImage}}
                 <div class="intro">
                     {{{excerpt}}}
                 </div>
+                {{/firstImage}}
             </article>
         </div>
         {{/posts}}

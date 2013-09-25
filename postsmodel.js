@@ -89,8 +89,9 @@ function syncPosts() {
 
                             var content = reply.toString();
                             var entry = parseEntry(item, content, entriesByTag, entriesByPath);
-
-                            fs.writeFileSync('./posts' + item.replace('md', 'json'), JSON.stringify(entry, null, '    '), 'utf8');
+                            if (entry) {
+                                fs.writeFileSync('./posts' + item.replace('md', 'json'), JSON.stringify(entry, null, '    '), 'utf8');
+                            }
 
                         }
                         else if (!metadata.is_dir) {
@@ -133,12 +134,24 @@ function syncPosts() {
 function parseEntry(item, content, entriesByTag, entriesByPath) {
 
 
+
+    console.log("---");
     content = content.replace(/(!\[image\]\()/gi, "$1/");
+    console.log(content.substring(0, 200));
+    console.log("---");
+
+    var entry = null;
+
+    try {
 
     var metaRe = /!!!([\w\W]+?)!!!/g;
     var metaContentMatch = metaRe.exec(content);
-    var metaContent = metaContentMatch ? metaContentMatch[1] : '';
+    console.log("<M<", metaContentMatch);
+    var metaContent = metaContentMatch ? metaContentMatch[1] : ' ';
     var parsedContent = content.replace(metaRe, '');
+
+    console.log("META", metaContentMatch);
+    console.log("META2", metaContent);
 
     var shortTitle = /(.*?)\n/.exec(metaContent)[1].replace(/^\s+/g, '').replace(/\s+$/g, '');
     var urlName = shortTitle.toLowerCase().replace(/[ ]/g, '-').replace(/['"´`]/g, '');
@@ -166,7 +179,7 @@ function parseEntry(item, content, entriesByTag, entriesByPath) {
         return tag;
     });
 
-    var entry = {
+    entry = {
         file: item,
         excerpt: excerpt,
         content: parsedContent,
@@ -185,6 +198,12 @@ function parseEntry(item, content, entriesByTag, entriesByPath) {
     entries.push(entry);
 
     entriesByPath[entry.path] = entry;
+
+    }
+    catch (err) {
+        console.log(err);
+        entry = null;
+    }
 
     return entry;
 }
